@@ -1,0 +1,324 @@
+body {
+  font-size: 16px;
+  color: #fff;
+  background-color: #1973BE ;
+  font-family: 'Oxygen', sans-serif;
+}
+
+/* HEADER */
+#header-nav {
+  background-color: #2A2B2D;
+  border-radius: 0;
+  border: 0;
+}
+
+#logo-img {
+  background: url('../images/logo.jpg') no-repeat;
+  width: 90px;
+  height: 90px;
+  margin: 10px 0px 10px 0;
+  background-size: 100% 100%;
+}
+
+.navbar-brand {
+  padding-top: 25px;
+}
+.navbar-brand h1 { /*Name*/
+  font-family: 'Oxygen', sans-serif;
+  color: #1973BE ;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #222;
+  margin-bottom: 0;
+  line-height: .75;
+}
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+#nav-list {
+  margin-top: 10px;
+}
+#nav-list a {
+  color: #1973BE ;
+  text-align: center;
+}
+#nav-list a:hover {
+  background: #E7E7E7;
+}
+#nav-list a span {
+  font-size: 1.8em;
+}
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid #1973BE ;/**/
+}
+.navbar-header button.navbar-toggle {
+  clear: both;
+  margin-top: -50px;
+}
+/* END HEADER */
+
+/* FOOTER */
+.panel-footer {
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  background-color: #222;
+  border-top: 0;
+  line-height: .8;
+  font-size: 0.8em;
+}
+.panel-footer section{
+  margin-top: 15px;  
+}
+.panel-footer div.row {
+  margin-bottom: 35px;
+}
+/* END FOOTER */
+
+
+/* HOME PAGE */
+#tutorial-tile, #random-tile, #simulation-tile {
+  height: 250px;
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+  border: 2px solid #0D3147;
+  overflow: hidden;
+}
+#tutorial-tile:hover, #random-tile:hover, #simulation-tile:hover {
+  box-shadow: 0 1px 5px 1px #cccccc;
+}
+#tutorial-tile {
+  background: url('../images/tutorial-tile.jpg') no-repeat;
+  background-position: center;
+}
+#random-tile {
+  background: url('../images/random-tile.jpg') no-repeat;
+  background-position: center;
+}
+#simulation-tile {
+  background: url('../images/simulation-tile.jpg') no-repeat;
+  background-position: center;
+}
+#tutorial-tile span, #simulation-tile span, #random-tile span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  opacity: .8;
+}
+
+#calendar-title{
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  opacity: .8;
+}
+/* END HOME PAGE */
+
+/* CATEGORIES PAGE */
+.category-tile { 
+  position: relative;
+  border: 2px solid #0D3147;/**/
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 15px;
+}
+.category-tile span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  opacity: .8;
+}
+.category-tile:hover {
+  box-shadow: 0 1px 5px 1px #cccccc;
+}
+
+#tutorial-categories-title + div {
+  margin-bottom: 50px;
+}
+/* END CATEGORIES PAGE */
+
+/* SINGLE CATEGORY PAGE */
+.tutorial-item-tile {
+  margin-bottom: 25px;
+}
+.tutorial-item-tile hr {
+  width: 80%;
+}
+.tutorial-item-photo {
+  position: relative;
+  border: 2px solid #0D3147; /**/
+  overflow: hidden;
+  padding: 0;
+  margin-right: -15px;
+  margin-left: auto;
+  margin-bottom: 20px;
+  max-width: 250px;
+}
+.tutorial-item-photo div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  background-color: #557c3e;
+  color:#0D3147;
+  text-align: center;
+}
+.tutorial-item-description {
+  padding-right: 30px;
+}
+h3.tutorial-item-title {
+  margin: 0 0 10px;
+}
+.tutorial-item-details {
+  font-size: .9em;
+  font-style: italic;
+}
+/** END SINGLE CATEGORY PAGE **/
+
+/* Single Video Page */
+.vid{
+width:720px;
+height:480px;
+}
+
+textarea{
+  background-color: #1973BE;
+  border: 0px;
+  resize: none;
+}
+/*End single Video Page*/
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Header */
+  #logo-img {
+    background: url('../images/restaurant-logo_medium.png') no-repeat;
+    width: 100px;
+    height: 100px;
+    margin: 5px 5px 5px 0;
+  }
+  /* End Header */
+
+  textarea{
+    width:100%;
+  }
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-nav>li>a{
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+  /* Header */
+  .navbar-brand {
+    padding-top: 10px;
+    height: 80px;
+  }
+  .navbar-brand h1 { /* Name */
+    padding-top: 10px;
+    font-size: 5vw; /* 1vw = 1% of viewport width */
+  }
+  #collapsable-nav a { /* Collapsed nav tutorial text */
+    font-size: 1.2em;
+  }
+  #collapsable-nav a span { /* Collapsed nav tutorial glyph */
+    font-size: 1em;
+    margin-right: 5px;
+  }
+  /* End Header */
+
+  /* Footer */
+  .panel-footer section {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .panel-footer section:nth-child(3) {
+    margin-bottom: 0; /* margin already exists on the whole row */
+  }
+  .panel-footer section hr {
+    width: 50%;
+  }
+  /* End Footer */
+
+  /* Home Page */
+  #tutorial-tile, #random-tile, #simulation-tile {
+    width: 360px;
+    margin: 0 auto 15px;
+  }
+
+  .tutorial-item-photo {
+    margin-right: auto;
+  }
+  .tutorial-item-description {
+    text-align: center;;
+  }
+  .vid{
+    width:100%;
+    height:480px;
+  }
+  textarea{
+    width:100%;
+  }
+
+/*About Page*/
+.about-img{
+  margin: auto;
+}
+/*End About Page*/
+
+}
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 479px) {
+  /* Header */
+  .navbar-brand h1 { /* Name */
+    padding-top: 5px;
+    font-size: 5vw;
+  }
+  /* End Header */
+  
+  /* Home page */
+  #tutorial-tile, #random-tile, #simulation-tile{
+    width: 280px;
+    margin: 0 auto 15px;
+  }
+  button.navbar-toggle{
+    padding: 5px 6px;
+  }
+
+  .col-xxs-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+    width: 100%;
+  }
+}

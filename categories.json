@@ -1,0 +1,4 @@
+[{"id":1,"short_name":"G","name":"Gmail","desc":"Tutorials on how to use Gmail","type":"tut"},
+	{"id":2,"short_name":"D","name":"Drive","desc":"Tutorials on how to use Google Drive","type":"tut"},
+	{"id":3,"short_name":"PA","name":"Private Area","desc":"Tutorials on how to use Private Area of BEST","type":"tut"},
+	{"id":4,"short_name":"CT","name":"Calling Theory Simulations","desc":"5-minute simulations on calling a company","type":"sim"}]

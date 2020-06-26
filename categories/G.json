@@ -1,0 +1,7 @@
+{"items":[{"id":101,"short_name":"G1","name":"Labels","description":"Tutorial on the basics of Labels","url":"qPE4gO-dHa8","furl":null},
+	{"id":102,"short_name":"G2","name":"Filters","description":"Tutorial on the basics of Filters","url":"WU2UswwwCaI","furl":null},
+	{"id":103,"short_name":"G3","name":"Mail Merging","description":"Tutorial on the basics of Mail Merging","url":"MQAsJgUvkH4","furl":null},
+	{"id":104,"short_name":"G4","name":"Tips & Tricks","description":"How we do it in our LBG","url":null,"furl":null},
+	{"id":105,"short_name":"G5","name":"General","description":"Tutorial on some useful setting for your gmail","url":null,"furl":null}],
+"category":{"id":1,"short_name":"G","name":"Gmail","desc":"Tutorials on how to use Gmail","type":"tut"}
+}

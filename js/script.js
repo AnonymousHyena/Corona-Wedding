@@ -14,12 +14,8 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 var lb = {};
 
 var homeHtmlUrl = "snippets/home-snippet.html";
-var categoriesTitleHtml = "snippets/categories-title-snippet.html";
-var categoryHtml = "snippets/category-snippet.html";
-var menuItemsUrl = "categories/";
-var menuItemsTitleHtml = "snippets/menu-items-title.html";
-var menuItemHtml = "snippets/menu-item.html";
-var type;
+var directionsHtmlUrl = "snippets/directions-snippet.html";
+var giftsHtmlUrl = "snippets/gifts-snippet.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -86,9 +82,6 @@ $ajaxUtils.sendGetRequest(
   false); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 
-lb.contctUs = function(){
-  window.open('mailto:thessaloniki-it@best.eu.org?Subject=Yo%20Problemo');
-}
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
@@ -101,246 +94,189 @@ function buildAndShowHomeHTML (categories) {
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
-lb.loadAboutPage = function () {
+lb.loadDirectionsPage = function () {
   showLoading("#main-content");
-  switchMenuToActive(3);
+  switchMenuToActive(2);
   $ajaxUtils.sendGetRequest(
-    aboutHtml,
-    function(aboutHtml){
-       insertHtml("#main-content",aboutHtml);
+    directionsHtmlUrl,
+    function(directionsHtml){
+       insertHtml("#main-content",directionsHtml);
     },false);
 };
 
-// Load the menu categories view
-lb.loadTutorialCategories = function () {
+lb.loadGiftsPage = function () {
   showLoading("#main-content");
-  type="tut";
+  switchMenuToActive(3);
   $ajaxUtils.sendGetRequest(
-    allCategoriesUrl,
-    buildAndShowCategoriesHTML);
+    giftsHtmlUrl,
+    function(giftsHtml){
+       insertHtml("#main-content",giftsHtml);
+    },false);
 };
 
-lb.loadSimulationCategories = function () {//!
-  showLoading("#main-content");
-  type="sim";
-  $ajaxUtils.sendGetRequest(
-    allCategoriesUrl,
-    buildAndShowSimCategoriesHTML);
-};
+// // Builds HTML for the categories page based on the data
+// // from the server
+// function buildAndShowCategoriesHTML (categories) {
+//   // Load title snippet of categories page
+//   $ajaxUtils.sendGetRequest(
+//     categoriesTitleHtml,
+//     function (categoriesTitleHtml) {
+//       // Retrieve single category snippet
+//       $ajaxUtils.sendGetRequest(
+//         categoryHtml,
+//         function (categoryHtml) {
+//           // Switch CSS class active to menu button
+//           switchMenuToActive(1);
 
-// Load the menu items view
-// 'categoryShort' is a short_name for a category
-lb.loadMenuItems = function (categoryShort) {//!
-  showLoading("#main-content");
-  $ajaxUtils.sendGetRequest(
-    menuItemsUrl + categoryShort+".json",
-    buildAndShowMenuItemsHTML);
-};
+//           var categoriesViewHtml = 
+//             buildCategoriesViewHtml(categories, 
+//                                     categoriesTitleHtml,
+//                                     categoryHtml,
+//                                     "tut");
+//           insertHtml("#main-content", categoriesViewHtml);
+//         },
+//         false);
+//     },
+//     false);
+// }
 
-lb.loadSingle = function (vid,short,fvid) {
-  showLoading("#main-content");
-  buildAndShowVidHTML(vid,short,fvid);
-};
+// function buildAndShowSimCategoriesHTML(categories) {
+//   // Load title snippet of categories page
+//   $ajaxUtils.sendGetRequest(
+//     simCategoriesTitleHtml,
+//     function (simCategoriesTitleHtml) {
+//       // Retrieve single category snippet
+//       $ajaxUtils.sendGetRequest(
+//         categoryHtml,
+//         function (categoryHtml) {
+//           // Switch CSS class active to menu button
+//           switchMenuToActive(2);
 
+//           var categoriesViewHtml = 
+//             buildCategoriesViewHtml(categories, 
+//                                     simCategoriesTitleHtml,
+//                                     categoryHtml,
+//                                     "sim");
+//           insertHtml("#main-content", categoriesViewHtml);
+//         },
+//         false);
+//     },
+//     false);
+// }
 
-// Builds HTML for the categories page based on the data
-// from the server
-function buildAndShowCategoriesHTML (categories) {
-  // Load title snippet of categories page
-  $ajaxUtils.sendGetRequest(
-    categoriesTitleHtml,
-    function (categoriesTitleHtml) {
-      // Retrieve single category snippet
-      $ajaxUtils.sendGetRequest(
-        categoryHtml,
-        function (categoryHtml) {
-          // Switch CSS class active to menu button
-          switchMenuToActive(1);
-
-          var categoriesViewHtml = 
-            buildCategoriesViewHtml(categories, 
-                                    categoriesTitleHtml,
-                                    categoryHtml,
-                                    "tut");
-          insertHtml("#main-content", categoriesViewHtml);
-        },
-        false);
-    },
-    false);
-}
-
-function buildAndShowSimCategoriesHTML(categories) {
-  // Load title snippet of categories page
-  $ajaxUtils.sendGetRequest(
-    simCategoriesTitleHtml,
-    function (simCategoriesTitleHtml) {
-      // Retrieve single category snippet
-      $ajaxUtils.sendGetRequest(
-        categoryHtml,
-        function (categoryHtml) {
-          // Switch CSS class active to menu button
-          switchMenuToActive(2);
-
-          var categoriesViewHtml = 
-            buildCategoriesViewHtml(categories, 
-                                    simCategoriesTitleHtml,
-                                    categoryHtml,
-                                    "sim");
-          insertHtml("#main-content", categoriesViewHtml);
-        },
-        false);
-    },
-    false);
-}
-
-// Using categories data and snippets html
-// build categories view HTML to be inserted into page
-function buildCategoriesViewHtml(categories, 
-                                 categoriesTitleHtml,
-                                 categoryHtml,
-                                 type) {
+// // Using categories data and snippets html
+// // build categories view HTML to be inserted into page
+// function buildCategoriesViewHtml(categories, 
+//                                  categoriesTitleHtml,
+//                                  categoryHtml,
+//                                  type) {
   
-  var finalHtml = categoriesTitleHtml;
-  finalHtml += "<section class='row'>";
+//   var finalHtml = categoriesTitleHtml;
+//   finalHtml += "<section class='row'>";
 
-  // Loop over categories
-  for (var i = 0; i < categories.length; i++) {
-    // Insert category values
-    if(categories[i].type != type){continue;}
-    var html = categoryHtml;
-    var name = "" + categories[i].name;
-    var short_name = categories[i].short_name;
-    html = 
-      insertProperty(html, "name", name);
-    html = 
-      insertProperty(html, 
-                     "short_name",
-                     short_name);
-    finalHtml += html;
-  }
+//   // Loop over categories
+//   for (var i = 0; i < categories.length; i++) {
+//     // Insert category values
+//     if(categories[i].type != type){continue;}
+//     var html = categoryHtml;
+//     var name = "" + categories[i].name;
+//     var short_name = categories[i].short_name;
+//     html = 
+//       insertProperty(html, "name", name);
+//     html = 
+//       insertProperty(html, 
+//                      "short_name",
+//                      short_name);
+//     finalHtml += html;
+//   }
 
-  finalHtml += "</section>";
-  return finalHtml;
-}
-
-
-
-// Builds HTML for the single category page based on the data
-// from the server
-function buildAndShowMenuItemsHTML (categoryMenuItems) {
-  // Load title snippet of menu items page
-  $ajaxUtils.sendGetRequest(
-    menuItemsTitleHtml,
-    function (menuItemsTitleHtml) {
-      // Retrieve single menu item snippet
-      $ajaxUtils.sendGetRequest(
-        menuItemHtml,
-        function (menuItemHtml) {
-          // Switch CSS class active to menu button
-          if(type=="tut"){switchMenuToActive(1);}
-          else{switchMenuToActive(2);}  
-          var menuItemsViewHtml = 
-            buildMenuItemsViewHtml(categoryMenuItems, 
-                                    menuItemsTitleHtml,
-                                    menuItemHtml);
-          insertHtml("#main-content", menuItemsViewHtml);
-        },
-        false);
-    },
-    false);
-}
+//   finalHtml += "</section>";
+//   return finalHtml;
+// }
 
 
-// Using category and menu items data and snippets html
-// build menu items view HTML to be inserted into page
-function buildMenuItemsViewHtml(categoryMenuItems, 
-                                menuItemsTitleHtml,
-                                menuItemHtml) {
+
+// // Builds HTML for the single category page based on the data
+// // from the server
+// function buildAndShowMenuItemsHTML (categoryMenuItems) {
+//   // Load title snippet of menu items page
+//   $ajaxUtils.sendGetRequest(
+//     menuItemsTitleHtml,
+//     function (menuItemsTitleHtml) {
+//       // Retrieve single menu item snippet
+//       $ajaxUtils.sendGetRequest(
+//         menuItemHtml,
+//         function (menuItemHtml) {
+//           // Switch CSS class active to menu button
+//           if(type=="tut"){switchMenuToActive(1);}
+//           else{switchMenuToActive(2);}  
+//           var menuItemsViewHtml = 
+//             buildMenuItemsViewHtml(categoryMenuItems, 
+//                                     menuItemsTitleHtml,
+//                                     menuItemHtml);
+//           insertHtml("#main-content", menuItemsViewHtml);
+//         },
+//         false);
+//     },
+//     false);
+// }
+
+
+// // Using category and menu items data and snippets html
+// // build menu items view HTML to be inserted into page
+// function buildMenuItemsViewHtml(categoryMenuItems, 
+//                                 menuItemsTitleHtml,
+//                                 menuItemHtml) {
   
-  menuItemsTitleHtml = 
-    insertProperty(menuItemsTitleHtml,
-                   "name",
-                   categoryMenuItems.category.name);
-  menuItemsTitleHtml = 
-    insertProperty(menuItemsTitleHtml,
-                   "desc",
-                   categoryMenuItems.category.desc);
+//   menuItemsTitleHtml = 
+//     insertProperty(menuItemsTitleHtml,
+//                    "name",
+//                    categoryMenuItems.category.name);
+//   menuItemsTitleHtml = 
+//     insertProperty(menuItemsTitleHtml,
+//                    "desc",
+//                    categoryMenuItems.category.desc);
 
-  var finalHtml = menuItemsTitleHtml;
-  finalHtml += "<section class='row'>";
+//   var finalHtml = menuItemsTitleHtml;
+//   finalHtml += "<section class='row'>";
 
-  // Loop over menu items
-  var menuItems = categoryMenuItems.items;
-  var catShortName = categoryMenuItems.category.short_name;
-  for (var i = 0; i < menuItems.length; i++) {
-    // Insert menu item values
-    var html = menuItemHtml;
-    html =
-      insertProperty(html, "url", menuItems[i].url);//vid url
-    html =
-      insertProperty(html, "furl", menuItems[i].furl);//feedback vid url
-    html = 
-      insertProperty(html, "short_name", menuItems[i].short_name);
-    html = 
-      insertProperty(html, 
-                     "catShortName",
-                     catShortName);
-    html = 
-      insertProperty(html, 
-                     "name",
-                     menuItems[i].name);
-    html = 
-      insertProperty(html, 
-                     "description",
-                     menuItems[i].description);
+//   // Loop over menu items
+//   var menuItems = categoryMenuItems.items;
+//   var catShortName = categoryMenuItems.category.short_name;
+//   for (var i = 0; i < menuItems.length; i++) {
+//     // Insert menu item values
+//     var html = menuItemHtml;
+//     html =
+//       insertProperty(html, "url", menuItems[i].url);//vid url
+//     html =
+//       insertProperty(html, "furl", menuItems[i].furl);//feedback vid url
+//     html = 
+//       insertProperty(html, "short_name", menuItems[i].short_name);
+//     html = 
+//       insertProperty(html, 
+//                      "catShortName",
+//                      catShortName);
+//     html = 
+//       insertProperty(html, 
+//                      "name",
+//                      menuItems[i].name);
+//     html = 
+//       insertProperty(html, 
+//                      "description",
+//                      menuItems[i].description);
 
-    // Add clearfix after every second menu item
-    if (i % 2 != 0) {
-      html += 
-        "<div class='clearfix visible-lg-block visible-md-block'></div>";
-    }
+//     // Add clearfix after every second menu item
+//     if (i % 2 != 0) {
+//       html += 
+//         "<div class='clearfix visible-lg-block visible-md-block'></div>";
+//     }
 
-    finalHtml += html;
-  }
+//     finalHtml += html;
+//   }
 
-  finalHtml += "</section>";
-  return finalHtml;
-}
-
-
-function buildAndShowVidHTML (vid,short,fvid) {
-  if(type=="tut"){
-    $ajaxUtils.sendGetRequest(
-      tutorialHtml,
-      function (tutorialHtml) {
-
-      var htmlToInsertIntoMainPage = insertProperty(tutorialHtml, "video", vid);
-
-      $ajaxUtils
-            .sendGetRequest("videos/scripts/"+short+".json", 
-              function (request) {
-                var name = request.text;
-
-                document.querySelector("#script")
-                  .innerHTML = name;
-              });
-
-      insertHtml("#main-content",htmlToInsertIntoMainPage);
-      },
-      false);}
-  else{
-    $ajaxUtils.sendGetRequest(
-      simulationHtml,
-      function (simulationHtml) {
-
-      var htmlToInsertIntoMainPage = insertProperty(simulationHtml, "video", vid);
-      htmlToInsertIntoMainPage = insertProperty(htmlToInsertIntoMainPage, "fvideo", fvid);
-
-      insertHtml("#main-content",htmlToInsertIntoMainPage);
-      },
-      false);}
-}
-
+//   finalHtml += "</section>";
+//   return finalHtml;
+// }
 
 global.$lb = lb;
 

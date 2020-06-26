@@ -1,5 +1,5 @@
 body {
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
   background-color: #1973BE ;
   font-family: 'Oxygen', sans-serif;
@@ -11,15 +11,6 @@ body {
   border-radius: 0;
   border: 0;
 }
-
-#logo-img {
-  background: url('../images/logo.jpg') no-repeat;
-  width: 90px;
-  height: 90px;
-  margin: 10px 0px 10px 0;
-  background-size: 100% 100%;
-}
-
 .navbar-brand {
   padding-top: 25px;
 }
@@ -62,22 +53,30 @@ body {
 .panel-footer {
   margin-top: 30px;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   background-color: #222;
   border-top: 0;
   line-height: .8;
   font-size: 0.8em;
 }
 .panel-footer section{
-  margin-top: 15px;  
+  margin-top: 5px;  
 }
 .panel-footer div.row {
   margin-bottom: 35px;
 }
 /* END FOOTER */
 
-
 /* HOME PAGE */
+a{
+  color: #fff;
+}
+
+#poem{
+  margin: 10px;
+}
+
+
 #tutorial-tile, #random-tile, #simulation-tile {
   height: 250px;
   width: 100%;
@@ -89,18 +88,7 @@ body {
 #tutorial-tile:hover, #random-tile:hover, #simulation-tile:hover {
   box-shadow: 0 1px 5px 1px #cccccc;
 }
-#tutorial-tile {
-  background: url('../images/tutorial-tile.jpg') no-repeat;
-  background-position: center;
-}
-#random-tile {
-  background: url('../images/random-tile.jpg') no-repeat;
-  background-position: center;
-}
-#simulation-tile {
-  background: url('../images/simulation-tile.jpg') no-repeat;
-  background-position: center;
-}
+
 #tutorial-tile span, #simulation-tile span, #random-tile span {
   position: absolute;
   bottom: 0;
@@ -193,37 +181,11 @@ h3.tutorial-item-title {
 }
 /** END SINGLE CATEGORY PAGE **/
 
-/* Single Video Page */
-.vid{
-width:720px;
-height:480px;
-}
-
-textarea{
-  background-color: #1973BE;
-  border: 0px;
-  resize: none;
-}
-/*End single Video Page*/
-
 /********** Large devices only **********/
 @media (min-width: 1200px) {}
 
 /********** Medium devices only **********/
-@media (min-width: 992px) and (max-width: 1199px) {
-  /* Header */
-  #logo-img {
-    background: url('../images/restaurant-logo_medium.png') no-repeat;
-    width: 100px;
-    height: 100px;
-    margin: 5px 5px 5px 0;
-  }
-  /* End Header */
-
-  textarea{
-    width:100%;
-  }
-}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 /********** Small devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
@@ -231,7 +193,6 @@ textarea{
     padding-right: 8px;
     padding-left: 8px;
   }
-
 }
 
 /********** Extra small devices only **********/
@@ -272,27 +233,12 @@ textarea{
     width: 360px;
     margin: 0 auto 15px;
   }
-
   .tutorial-item-photo {
     margin-right: auto;
   }
   .tutorial-item-description {
     text-align: center;;
   }
-  .vid{
-    width:100%;
-    height:480px;
-  }
-  textarea{
-    width:100%;
-  }
-
-/*About Page*/
-.about-img{
-  margin: auto;
-}
-/*End About Page*/
-
 }
 
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
@@ -312,7 +258,6 @@ textarea{
   button.navbar-toggle{
     padding: 5px 6px;
   }
-
   .col-xxs-12 {
     position: relative;
     min-height: 1px;

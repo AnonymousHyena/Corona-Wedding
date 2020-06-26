@@ -14,16 +14,11 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 var lb = {};
 
 var homeHtmlUrl = "snippets/home-snippet.html";
-var allCategoriesUrl = "categories.json";
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
-var simCategoriesTitleHtml = "snippets/simulation-categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
 var menuItemsUrl = "categories/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
-var tutorialHtml = "snippets/tutorial-snippet.html";
-var simulationHtml = "snippets/simulation-snippet.html";
-var aboutHtml = "snippets/about-snippet.html";
 var type;
 
 // Convenience function for inserting innerHTML for 'select'
@@ -118,18 +113,6 @@ function buildAndShowHomeHTML (categories) {
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
-
-
-// Given array of category objects, returns a random category object.
-function chooseRandomCategory (categories) {
-  // Choose a random index into the array (from 0 inclusively until array length (exclusively))
-  var randomArrayIndex = Math.floor(Math.random() * categories.length);
-  if (categories[randomArrayIndex].type=="sim"){type="sim";}
-  else{type="tut";}
-  // return category object with that randomArrayIndex
-  return categories[randomArrayIndex];
-}
-
 
 lb.loadAboutPage = function () {
   showLoading("#main-content");

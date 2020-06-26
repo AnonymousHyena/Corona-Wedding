@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // On first load, show home view
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
-  null, 
+  homeHtmlUrl, 
   buildAndShowHomeHTML, 
-  true); // Explicitely setting the flag to get JSON from server processed into an object literal
+  false); // Explicitely setting the flag to get JSON from server processed into an object literal
 });
 
 lb.contctUs = function(){
@@ -92,24 +92,11 @@ lb.contctUs = function(){
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-  
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {
-
-      var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
-
-      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'"+chosenCategoryShortName+"'") ;
-      
-      insertHtml("#main-content",homeHtmlToInsertIntoMainPage);
-
-      var monthNames = ["January", "February", "March", "April", "May", 
-      "June","July", "August", "September", "October", "November", "December"];
-
-      var d = new Date();
-      document.querySelector("#month").innerHTML=monthNames[d.getMonth()];
-      
+      insertHtml("#main-content",homeHtml);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }

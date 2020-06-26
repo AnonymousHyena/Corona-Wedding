@@ -1,5 +1,5 @@
 body {
-  font-size: 18px;
+  font-size: 24px;
   color: #fff;
   background-color: #1973BE ;
   font-family: 'Oxygen', sans-serif;
@@ -11,9 +11,7 @@ body {
   border-radius: 0;
   border: 0;
 }
-.navbar-brand {
-  padding-top: 25px;
-}
+
 .navbar-brand h1 { /*Name*/
   font-family: 'Oxygen', sans-serif;
   color: #1973BE ;
@@ -27,9 +25,7 @@ body {
 .navbar-brand a:hover, .navbar-brand a:focus {
   text-decoration: none;
 }
-#nav-list {
-  margin-top: 10px;
-}
+
 #nav-list a {
   color: #1973BE ;
   text-align: center;
@@ -38,7 +34,8 @@ body {
   background: #E7E7E7;
 }
 #nav-list a span {
-  font-size: 1.8em;
+  font-size: 1.5em;
+  padding-bottom: 7px;
 }
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
   border: 1px solid #1973BE ;/**/
@@ -73,7 +70,18 @@ a{
 }
 
 #poem{
-  margin: 10px;
+  margin: 20px;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+h1{
+    font-size: 1.8em;
+    margin: 20px;
+}
+h2{
+    font-size: 1.5em;
+    margin: 20px;
 }
 
 

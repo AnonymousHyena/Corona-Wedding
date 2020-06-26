@@ -46,22 +46,22 @@ var switchMenuToActive = function (buttonIndex) {
   classes = classes.replace(new RegExp("active", "g"), "");
   document.querySelector("#navHomeButton").className = classes;
 
-  var classes = document.querySelector("#navMenuTutButton").className;
+  var classes = document.querySelector("#navMenuRSVPButton").className;
   classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navMenuTutButton").className = classes;
+  document.querySelector("#navMenuRSVPButton").className = classes;
 
-  var classes = document.querySelector("#navMenuSimButton").className;
+  var classes = document.querySelector("#navMenuDirButton").className;
   classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navMenuSimButton").className = classes;
+  document.querySelector("#navMenuDirButton").className = classes;
 
-  var classes = document.querySelector("#navMenuAboutButton").className;
+  var classes = document.querySelector("#navMenuGiftButton").className;
   classes = classes.replace(new RegExp("active", "g"), "");
-  document.querySelector("#navMenuAboutButton").className = classes;
+  document.querySelector("#navMenuGiftButton").className = classes;
 
   var menuSelector;
-  if (buttonIndex==1){menuSelector="#navMenuTutButton";}
-  else if (buttonIndex==2){menuSelector="#navMenuSimButton";}
-  else if (buttonIndex==3){menuSelector="#navMenuAboutButton";}
+  if (buttonIndex==1){menuSelector="#navMenuRSVPButton";}
+  else if (buttonIndex==2){menuSelector="#navMenuDirButton";}
+  else if (buttonIndex==3){menuSelector="#navMenuGiftButton";}
   // Add 'active' to menu button if not already there
   classes = document.querySelector(menuSelector).className;
   if (classes.indexOf("active") == -1) {
@@ -73,7 +73,6 @@ var switchMenuToActive = function (buttonIndex) {
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
   
-
 // On first load, show home view
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(

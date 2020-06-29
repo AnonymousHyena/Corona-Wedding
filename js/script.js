@@ -1,10 +1,9 @@
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
-  $("#navbarToggle").blur(function (event) {
+  $("#navbarToggle").blur(function(event){
     var screenWidth = window.innerWidth;
     if (screenWidth < 768) {
-      $("#collapsable-nav").collapse('hide');
-    }
+      $("#collapsable-nav").collapse('hide');}
   });
 });
 
@@ -31,15 +30,6 @@ var showLoading = function (selector) {
   html += "<img src='images/ajax-loader.gif'></div>";
   insertHtml(selector, html);
 };
-// Return substitute of '{{propName}}' 
-// with propValue in given 'string' 
-var insertProperty = function (string, propName, propValue) {
-  var propToReplace = "{{" + propName + "}}";
-  string = string
-    .replace(new RegExp(propToReplace, "g"), propValue);
-  return string;
-};
-
 // Remove the class 'active' from home and switch to Menu button
 var switchMenuToActive = function (buttonIndex) {
   // Remove 'active' from home button
@@ -72,36 +62,30 @@ var switchMenuToActive = function (buttonIndex) {
     document.querySelector(menuSelector).className = classes;
   }
 };
-// On page load (before images or CSS)
-document.addEventListener("DOMContentLoaded", function (event) {  
-// On first load, show home view
-  showLoading("#main-content");
-  cw.loadHomePage();
-});
+// On page load (before images or CSS), show home view
+document.addEventListener("DOMContentLoaded",function(event){cw.loadHomePage();});
+
 cw.loadHomePage = function () {
   showLoading("#main-content");
   switchMenuToActive(0);
   if (language==0){
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
-    function(homeHtml){
-       insertHtml("#main-content",homeHtml);
-    },false);} // Explicitely setting the flag to get JSON from server processed into an object literal
+    function(homeHtml){insertHtml("#main-content",homeHtml);},
+    false);} // Explicitely setting the flag to get JSON from server processed into an object literal
   else{
 $ajaxUtils.sendGetRequest(
     homeHtmlUrlGr,
-    function(homeHtml){
-       insertHtml("#main-content",homeHtml);
-    },false);}
+    function(homeHtml){insertHtml("#main-content",homeHtml);},
+    false);}
 };
 cw.loadRSVPPage = function(){
   showLoading("#main-content");
   switchMenuToActive(1);
   $ajaxUtils.sendGetRequest(
     rsvpHtmlUrl,
-    function(rsvpHtml){
-       insertHtml("#main-content",rsvpHtml);
-    },false);
+    function(rsvpHtml){insertHtml("#main-content",rsvpHtml);},
+    false);
 };
 cw.loadDirectionsPage = function(){
   showLoading("#main-content");
@@ -109,15 +93,13 @@ cw.loadDirectionsPage = function(){
   if (language == 0){
     $ajaxUtils.sendGetRequest(
       directionsHtmlUrl,
-      function(directionsHtml){
-         insertHtml("#main-content",directionsHtml);
-      },false);}
+      function(directionsHtml){insertHtml("#main-content",directionsHtml);},
+      false);}
   else{
       $ajaxUtils.sendGetRequest(
       directionsHtmlUrlGr,
-      function(directionsHtml){
-         insertHtml("#main-content",directionsHtml);
-      },false);}
+      function(directionsHtml){insertHtml("#main-content",directionsHtml);},
+      false);}
 };
 cw.loadGiftsPage = function(){
   showLoading("#main-content");
@@ -125,29 +107,27 @@ cw.loadGiftsPage = function(){
   if (language == 0){
     $ajaxUtils.sendGetRequest(
       giftsHtmlUrl,
-      function(giftsHtml){
-         insertHtml("#main-content",giftsHtml);
-      },false);}
+      function(giftsHtml){insertHtml("#main-content",giftsHtml);},
+      false);}
   else{
     $ajaxUtils.sendGetRequest(
     giftsHtmlUrlGr,
-    function(giftsHtml){
-       insertHtml("#main-content",giftsHtml);
-    },false);}
+    function(giftsHtml){insertHtml("#main-content",giftsHtml);},
+    false);}
 };
 cw.toggleLanguage = function(){
   if (language==1){
     document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Αρχική',' Home');
     document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Πώς να έρθετε',' Get Directions');
     document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Γαμήλιο Δώρο',' Gift Registry');
-    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' Ελληνικά',' English');
+    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' English',' Ελληνικά'); 
   }
   else{
     document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Home',' Αρχική');
     document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Get Directions',' Πώς να έρθετε');
-    document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Gift Registry',' Γαμήλιο Δώρο'); 
-    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' English',' Ελληνικά'); 
-  }
+    document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Gift Registry',' Γαμήλιο Δώρο');
+    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' Ελληνικά',' English');
+   }
   language = 1-language;
   if (active==0){cw.loadHomePage();}
   else if (active==1){cw.loadRSVPPage();}
@@ -158,4 +138,3 @@ cw.toggleLanguage = function(){
 global.$cw = cw;
 
 })(window);
-

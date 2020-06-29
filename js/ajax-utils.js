@@ -3,7 +3,6 @@
 // Set up a namespace for our utility
 var ajaxUtils = {};
 
-
 // Returns an HTTP request object
 function getRequestObject() {
   if (window.XMLHttpRequest) {
@@ -34,8 +33,7 @@ ajaxUtils.sendGetRequest =
   };
 
 // Only calls user provided 'responseHandler'
-// function if response is ready
-// and not an error
+// function if response is ready and not an error
 function handleResponse(request,
                         responseHandler,
                         isJsonResponse) {
@@ -55,11 +53,7 @@ function handleResponse(request,
     }
   }
 }
-
-
 // Expose utility to the global object
 global.$ajaxUtils = ajaxUtils;
 
-
 })(window);
-

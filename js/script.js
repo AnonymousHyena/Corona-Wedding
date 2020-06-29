@@ -10,25 +10,27 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
 (function (global) {
 var cw = {};
-
+var language = 0;//0 english, 1 greek
+var active = 0;
 var homeHtmlUrl = "snippets/home-snippet.html";
+var homeHtmlUrlGr = "snippets/home-snippet-gr.html";
 var rsvpHtmlUrl = "snippets/rsvp-snippet.html";
 var directionsHtmlUrl = "snippets/directions-snippet.html";
+var directionsHtmlUrlGr = "snippets/directions-snippet-gr.html";
 var giftsHtmlUrl = "snippets/gifts-snippet.html";
+var giftsHtmlUrlGr = "snippets/gifts-snippet-gr.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
   targetElem.innerHTML = html;
 };
-
 // Show loading icon inside element identified by 'selector'.
 var showLoading = function (selector) {
   var html = "<div class='text-center'>";
   html += "<img src='images/ajax-loader.gif'></div>";
   insertHtml(selector, html);
 };
-
 // Return substitute of '{{propName}}' 
 // with propValue in given 'string' 
 var insertProperty = function (string, propName, propValue) {
@@ -58,7 +60,9 @@ var switchMenuToActive = function (buttonIndex) {
   document.querySelector("#navMenuGiftButton").className = classes;
 
   var menuSelector;
-  if (buttonIndex==1){menuSelector="#navMenuRSVPButton";}
+  active = buttonIndex;
+  if (buttonIndex==0){menuSelector="#navHomeButton";}
+  else if (buttonIndex==1){menuSelector="#navMenuRSVPButton";}
   else if (buttonIndex==2){menuSelector="#navMenuDirButton";}
   else if (buttonIndex==3){menuSelector="#navMenuGiftButton";}
   // Add 'active' to menu button if not already there
@@ -68,33 +72,29 @@ var switchMenuToActive = function (buttonIndex) {
     document.querySelector(menuSelector).className = classes;
   }
 };
-
 // On page load (before images or CSS)
-document.addEventListener("DOMContentLoaded", function (event) {
-
-
-  
+document.addEventListener("DOMContentLoaded", function (event) {  
 // On first load, show home view
-showLoading("#main-content");
-$ajaxUtils.sendGetRequest(
-  homeHtmlUrl, 
-  buildAndShowHomeHTML, 
-  false); // Explicitely setting the flag to get JSON from server processed into an object literal
+  showLoading("#main-content");
+  cw.loadHomePage();
 });
-
-// Builds HTML for the home page based on categories array
-// returned from the server.
-function buildAndShowHomeHTML (categories) {
-  // Load home snippet page
+cw.loadHomePage = function () {
+  showLoading("#main-content");
+  switchMenuToActive(0);
+  if (language==0){
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
-    function (homeHtml) {
-      insertHtml("#main-content",homeHtml);
-    },
-    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
-}
-
-cw.loadRSVPPage = function () {
+    function(homeHtml){
+       insertHtml("#main-content",homeHtml);
+    },false);} // Explicitely setting the flag to get JSON from server processed into an object literal
+  else{
+$ajaxUtils.sendGetRequest(
+    homeHtmlUrlGr,
+    function(homeHtml){
+       insertHtml("#main-content",homeHtml);
+    },false);}
+};
+cw.loadRSVPPage = function(){
   showLoading("#main-content");
   switchMenuToActive(1);
   $ajaxUtils.sendGetRequest(
@@ -103,26 +103,57 @@ cw.loadRSVPPage = function () {
        insertHtml("#main-content",rsvpHtml);
     },false);
 };
-
-cw.loadDirectionsPage = function () {
+cw.loadDirectionsPage = function(){
   showLoading("#main-content");
   switchMenuToActive(2);
-  $ajaxUtils.sendGetRequest(
-    directionsHtmlUrl,
-    function(directionsHtml){
-       insertHtml("#main-content",directionsHtml);
-    },false);
+  if (language == 0){
+    $ajaxUtils.sendGetRequest(
+      directionsHtmlUrl,
+      function(directionsHtml){
+         insertHtml("#main-content",directionsHtml);
+      },false);}
+  else{
+      $ajaxUtils.sendGetRequest(
+      directionsHtmlUrlGr,
+      function(directionsHtml){
+         insertHtml("#main-content",directionsHtml);
+      },false);}
 };
-
-cw.loadGiftsPage = function () {
+cw.loadGiftsPage = function(){
   showLoading("#main-content");
   switchMenuToActive(3);
-  $ajaxUtils.sendGetRequest(
-    giftsHtmlUrl,
+  if (language == 0){
+    $ajaxUtils.sendGetRequest(
+      giftsHtmlUrl,
+      function(giftsHtml){
+         insertHtml("#main-content",giftsHtml);
+      },false);}
+  else{
+    $ajaxUtils.sendGetRequest(
+    giftsHtmlUrlGr,
     function(giftsHtml){
        insertHtml("#main-content",giftsHtml);
-    },false);
+    },false);}
 };
+cw.toggleLanguage = function(){
+  if (language==1){
+    document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Αρχική',' Home');
+    document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Πώς να έρθετε',' Get Directions');
+    document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Γαμήλιο Δώρο',' Gift Registry');
+    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' Ελληνικά',' English');
+  }
+  else{
+    document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Home',' Αρχική');
+    document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Get Directions',' Πώς να έρθετε');
+    document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Gift Registry',' Γαμήλιο Δώρο'); 
+    document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' English',' Ελληνικά'); 
+  }
+  language = 1-language;
+  if (active==0){cw.loadHomePage();}
+  else if (active==1){cw.loadRSVPPage();}
+  else if (active==2){cw.loadDirectionsPage();}
+  else if (active==3){cw.loadGiftsPage();}
+  };
 
 global.$cw = cw;
 

@@ -15,7 +15,7 @@
       <div class="container">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <a href="index.html"><h1>Corona Wedding</h1></a>
+            <a href="#" onclick="$cw.loadHomePage();"><h1>Corona Wedding</h1></a>
           </div>
 
           <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
@@ -29,7 +29,7 @@
         <div id="collapsable-nav" class="collapse navbar-collapse">
            <ul id="nav-list" class="nav navbar-nav navbar-right">
             <li id="navHomeButton" class="visible-xs active">
-              <a href="index.html">
+              <a href="#" onclick="$cw.loadHomePage();">
                 <span class="glyphicon glyphicon-home"></span> Home</a>
             </li>
             <li id="navMenuRSVPButton">
@@ -43,6 +43,10 @@
             <li id="navMenuGiftButton">
               <a href="#" onclick="$cw.loadGiftsPage();">
                 <span class="glyphicon glyphicon-gift"></span><br class="hidden-xs"> Gift Registry</a>
+            </li>
+            <li id="navMenuLanButton">
+              <a href="#" onclick="$cw.toggleLanguage();">
+                <span class="glyphicon glyphicon-flag"></span><br class="hidden-xs"> English</a>
             </li>
           </ul><!-- #nav-list -->
         </div><!-- .collapse .navbar-collapse -->

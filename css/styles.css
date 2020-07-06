@@ -1,20 +1,20 @@
 body {
   font-size: 20px;
-  color: #fff;
-  background-color: #1973BE ;
+  color: #ece8e7;
+  background-color: #1c4443 ;
   /*font-family: 'Raleway', sans-serif;*/
   font-family: 'Advent Pro', sans-serif;
 }
 
 /* Header */
 #header-nav {
-  background-color: #2A2B2D;
+  background-color: #838c67;
   border-radius: 0;
   border: 0;
 }
 .navbar-brand h1 { /*Name*/
   font-family: 'Lobster', sans-serif;
-  color: #1973BE ;
+  color: #ece8e7 ;
   font-size: 1.5em;
   text-transform: uppercase;
   font-weight: bold;
@@ -26,18 +26,28 @@ body {
   text-decoration: none;
 }
 #nav-list a {
-  color: #1973BE ;
+  color: #ece8e7 ;
   text-align: center;
 }
-#nav-list a:hover {
-  background: #E7E7E7;
+#nav-list a:hover{
+  background: #C5C5C5;
 }
+.navbar-default .navbar-nav > .active  {}
+.navbar-default .navbar-nav > .active{
+  background: #C5C5C5;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+  background: #C5C5C5;
+}
+
 #nav-list a span {
   font-size: 1.5em;
   padding-bottom: 7px;
 }
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
-  border: 1px solid #1973BE ;/**/
+  border: 1px solid #ece8e7 ;/**/
 }
 .navbar-header button.navbar-toggle {
   clear: both;
@@ -50,7 +60,7 @@ body {
   margin-top: 30px;
   padding-top: 30px;
   padding-bottom: 5px;
-  background-color: #222;
+  background-color: #838c67;
   border-top: 0;
   line-height: .8;
   font-size: 0.8em;
@@ -80,6 +90,11 @@ h2{
     font-size: 1.5em;
     margin: 20px;
 }
+.dotted{
+  border: 10px;
+  border-style: dotted;
+  border-color: #838c67; 
+}
 /* End Home Page */
 
 /* Directions Page */
@@ -99,6 +114,12 @@ h2{
   border: 0px !important ;
 }
 /* End RSVP Page */
+
+/* Gifts Page */
+.whole{
+  height: -webkit-fill-available;
+}
+/* Gifts Page */
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {}

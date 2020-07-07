@@ -19,7 +19,14 @@ var giftsHtmlUrl = "snippets/gifts-snippet.html";
 var giftsHtmlUrlGr = "snippets/gifts-snippet-gr.html";
 var teamHtmlUrl = "snippets/about-snippet.html";
 var teamHtmlUrlGr = "snippets/about-snippet-gr.html";
-
+var koumparoi = [
+  {"image":"JohnDoe.jpg","name":"Theodore Vasiloudis","title":"Best Man","namegr":"Θοδωρής Βασιλούδης","titlegr":"Κουμπάρος"},
+  {"image":"JohnDoe.jpg","name":"Jason Loukaidis","title":"Best Man","namegr":"Ιάσονας Λουκαΐδης","titlegr":"Κουμπάρος"},
+  {"image":"JohnDoe.jpg","name":"Eugenia Bozika","title":"Best Woman","namegr":"Ευγενία Μποζίκα","titlegr":"Κουμπάρα"},
+  {"image":"JohnDoe.jpg","name":"Stathis Bozikas","title":"Best Man","namegr":"Στάθης Μποζίκας","titlegr":"Κουμπάρος"},
+  {"image":"JohnDoe.jpg","name":"Giorgos Malliaros","title":"Best Man","namegr":"Γιώργος Μαλλιαρός","titlegr":"Κουμπάρος"},
+  {"image":"JohnDoe.jpg","name":"Christos Lafantaris","title":"Best Man","namegr":"Χρήστος Λαφαντάρης","titlegr":"Κουμπάρος"}
+  ]
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
@@ -30,6 +37,26 @@ var showLoading = function (selector) {
   var html = "<div class='text-center'>";
   html += "<img src='images/ajax-loader.gif'></div>";
   insertHtml(selector, html);
+};
+// Return substitute of '{{propName}}' 
+// with propValue in given 'string' 
+var insertProperty = function (string, propName, propValue) {
+  var propToReplace = "{{" + propName + "}}";
+  string = string
+    .replace(new RegExp(propToReplace, "g"), propValue);
+  return string;
+};
+var shuffle = function(array){
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while(0!=currentIndex){
+    randomIndex = Math.floor(Math.random()*currentIndex);
+    currentIndex -=1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex]=array[randomIndex];
+    array[randomIndex]=temporaryValue;
+  }
+  return array;
+
 };
 // Remove the class 'active' from home and switch to Menu button
 var switchMenuToActive = function (buttonIndex) {
@@ -127,13 +154,27 @@ cw.loadTeamPage = function(){
   if (language == 0){
     $ajaxUtils.sendGetRequest(
       teamHtmlUrl,
-      function(teamHtml){insertHtml("#main-content",teamHtml);},
+      function(teamHtml){
+        koumparoi = shuffle(koumparoi);
+        for (var i = 0; i < 6; i++) {
+          teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          teamHtml = insertProperty(teamHtml,"name"+i,koumparoi[i].name)
+          teamHtml = insertProperty(teamHtml,"title"+i,koumparoi[i].title)
+        }
+        insertHtml("#main-content",teamHtml);},
       false);}
   else{
     $ajaxUtils.sendGetRequest(
-    teamHtmlUrlGr,
-    function(teamHtml){insertHtml("#main-content",teamHtml);},
-    false);}
+      teamHtmlUrlGr,
+      function(teamHtml){
+        koumparoi = shuffle(koumparoi);
+        for (var i = 0; i < 6; i++) {
+          teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          teamHtml = insertProperty(teamHtml,"name"+i,koumparoi[i].namegr)
+          teamHtml = insertProperty(teamHtml,"title"+i,koumparoi[i].titlegr)
+        }
+        insertHtml("#main-content",teamHtml);},
+      false);}
 };
 cw.toggleLanguage = function(){
   if (language==1){

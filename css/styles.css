@@ -83,7 +83,11 @@ h1{
 }
 h2{
     font-size: 1.5em;
-    margin: 20px;
+    margin: 10px;
+}
+.breath{
+  margin: 7px;
+  font-size: 1.3em;
 }
 .dotted{
   border: 10px;

@@ -6,7 +6,6 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
       $("#collapsable-nav").collapse('hide');}
   });
 });
-
 (function (global) {
 var cw = {};
 var language = 0;//0 english, 1 greek
@@ -18,6 +17,8 @@ var directionsHtmlUrl = "snippets/directions-snippet.html";
 var directionsHtmlUrlGr = "snippets/directions-snippet-gr.html";
 var giftsHtmlUrl = "snippets/gifts-snippet.html";
 var giftsHtmlUrlGr = "snippets/gifts-snippet-gr.html";
+var teamHtmlUrl = "snippets/about-snippet.html";
+var teamHtmlUrlGr = "snippets/about-snippet-gr.html";
 
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -49,12 +50,17 @@ var switchMenuToActive = function (buttonIndex) {
   classes = classes.replace(new RegExp("active", "g"), "");
   document.querySelector("#navMenuGiftButton").className = classes;
 
+  var classes = document.querySelector("#navMenuTeamButton").className;
+  classes = classes.replace(new RegExp("active", "g"), "");
+  document.querySelector("#navMenuTeamButton").className = classes;
+
   var menuSelector;
   active = buttonIndex;
   if (buttonIndex==0){menuSelector="#navHomeButton";}
   else if (buttonIndex==1){menuSelector="#navMenuRSVPButton";}
   else if (buttonIndex==2){menuSelector="#navMenuDirButton";}
   else if (buttonIndex==3){menuSelector="#navMenuGiftButton";}
+  else if (buttonIndex==4){menuSelector="#navMenuTeamButton";}
   // Add 'active' to menu button if not already there
   classes = document.querySelector(menuSelector).className;
   if (classes.indexOf("active") == -1) {
@@ -115,24 +121,41 @@ cw.loadGiftsPage = function(){
     function(giftsHtml){insertHtml("#main-content",giftsHtml);},
     false);}
 };
+cw.loadTeamPage = function(){
+  showLoading("#main-content");
+  switchMenuToActive(4);
+  if (language == 0){
+    $ajaxUtils.sendGetRequest(
+      teamHtmlUrl,
+      function(teamHtml){insertHtml("#main-content",teamHtml);},
+      false);}
+  else{
+    $ajaxUtils.sendGetRequest(
+    teamHtmlUrlGr,
+    function(teamHtml){insertHtml("#main-content",teamHtml);},
+    false);}
+};
 cw.toggleLanguage = function(){
   if (language==1){
     document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Αρχική',' Home');
     document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Πώς να έρθετε',' Get Directions');
     document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Γαμήλιο Δώρο',' Gift Registry');
     document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' English',' Ελληνικά'); 
+    document.querySelector("#navMenuTeamButton").innerHTML = document.querySelector("#navMenuTeamButton").innerHTML.replace(' H Ομάδα',' Meet the Team'); 
   }
   else{
     document.querySelector("#navHomeButton").innerHTML = document.querySelector("#navHomeButton").innerHTML.replace(' Home',' Αρχική');
     document.querySelector("#navMenuDirButton").innerHTML = document.querySelector("#navMenuDirButton").innerHTML.replace(' Get Directions',' Πώς να έρθετε');
     document.querySelector("#navMenuGiftButton").innerHTML = document.querySelector("#navMenuGiftButton").innerHTML.replace(' Gift Registry',' Γαμήλιο Δώρο');
     document.querySelector("#navMenuLanButton").innerHTML = document.querySelector("#navMenuLanButton").innerHTML.replace(' Ελληνικά',' English');
+    document.querySelector("#navMenuTeamButton").innerHTML = document.querySelector("#navMenuTeamButton").innerHTML.replace(' Meet the Team',' H Ομάδα');
    }
   language = 1-language;
   if (active==0){cw.loadHomePage();}
   else if (active==1){cw.loadRSVPPage();}
   else if (active==2){cw.loadDirectionsPage();}
   else if (active==3){cw.loadGiftsPage();}
+  else if (active==4){cw.loadTeamPage();}
   };
 
 global.$cw = cw;

@@ -5,7 +5,6 @@ body {
   /*font-family: 'Raleway', sans-serif;*/
   font-family: 'Advent Pro', sans-serif;
 }
-
 /* Header */
 #header-nav {
   background-color: #838c67;
@@ -30,18 +29,17 @@ body {
   text-align: center;
 }
 #nav-list a:hover{
-  background: #C5C5C5;
+  background: #c5c5c5;
 }
-.navbar-default .navbar-nav > .active  {}
+.navbar-default .navbar-nav > .active{}
 .navbar-default .navbar-nav > .active{
-  background: #C5C5C5;
+  background: #c5c5c5;
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
-  background: #C5C5C5;
+  background: #c5c5c5;
 }
-
 #nav-list a span {
   font-size: 1.5em;
   padding-bottom: 7px;
@@ -54,7 +52,6 @@ body {
   margin-top: -50px;
 }
 /* End Header */
-
 /* Footer */
 .panel-footer {
   margin-top: 30px;
@@ -72,7 +69,6 @@ body {
   margin-bottom: 35px;
 }
 /* End Footer */
-
 /* Home Page */
 a{
   color: #fff;
@@ -96,37 +92,43 @@ h2{
   border-color: #838c67; 
 }
 /* End Home Page */
-
 /* Directions Page */
 .map{
-  width: 600px;
+  width: 550px;
   height: 450px;
 }
 /* End Directions Page */
-
 /* RSVP Page */
 .rsvpform{
   width: 100%;
-  height: -webkit-fill-available;
+  height: 100vh;
 }
-.freebirdFormviewerComponentsQuestionBaseRoot{
+/*.freebirdFormviewerComponentsQuestionBaseRoot{
   background-color: unset !important ;
   border: 0px !important ;
-}
+}*/
 /* End RSVP Page */
-
 /* Gifts Page */
 .whole{
-  height: -webkit-fill-available;
+  height: 100vh;
 }
 /* Gifts Page */
-
+/*About Page*/
+.about-img{
+  margin-top: 35px;
+}
+.team-title {
+  margin: 0 0 5px;
+}
+.team-details {
+  font-size: .9em;
+  font-style: italic;
+}
+/*End About Page*/
 /********** Large devices only **********/
 @media (min-width: 1200px) {}
-
 /********** Medium devices only **********/
 @media (min-width: 992px) and (max-width: 1199px) {}
-
 /********** Small devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar-nav>li>a{
@@ -169,8 +171,12 @@ h2{
     margin-bottom: 0px;
   }
   /* End Footer */
+  /*About Page*/
+  .about-img{
+    margin: auto;
+  }
+  /*End About Page*/
 }
-
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
   body {
@@ -182,7 +188,6 @@ h2{
     font-size: 5vw;
   }
   /* End Header */
-  
   /* Home page */
   button.navbar-toggle{
     padding: 5px 6px;
@@ -201,5 +206,8 @@ h2{
   .map{
     width: 100%;
     height: 250px;
+  }
+  .whole{
+    height: inherit;
   }
 }

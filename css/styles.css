@@ -134,9 +134,22 @@ h2{
 @media (min-width: 992px) and (max-width: 1199px) {}
 /********** Small devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
+  body{
+    font-size: 18px;
+  }
   .navbar-nav>li>a{
     padding-right: 8px;
     padding-left: 8px;
+  }
+  .navbar-brand h1 { /*Name*/
+    font-size: 1.3em;
+  }
+  #nav-list a span {
+    font-size: 1.1em;
+    padding-bottom: 5px;
+  }
+  .whole{
+    height: inherit;
   }
 }
 /********** Extra small devices only **********/
@@ -179,6 +192,9 @@ h2{
     margin: auto;
   }
   /*End About Page*/
+  /*.whole{
+    height: inherit;
+  }*/
 }
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {

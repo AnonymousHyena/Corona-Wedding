@@ -20,12 +20,12 @@ var giftsHtmlUrlGr = "snippets/gifts-snippet-gr.html";
 var teamHtmlUrl = "snippets/about-snippet.html";
 var teamHtmlUrlGr = "snippets/about-snippet-gr.html";
 var koumparoi = [
-  {"image":"JohnDoe.jpg","name":"Theodore Vasiloudis","title":"Best Man","namegr":"Θοδωρής Βασιλούδης","titlegr":"Κουμπάρος"},
-  {"image":"JohnDoe.jpg","name":"Jason Loukaidis","title":"Best Man","namegr":"Ιάσονας Λουκαΐδης","titlegr":"Κουμπάρος"},
-  {"image":"JohnDoe.jpg","name":"Eugenia Bozika","title":"Best Woman","namegr":"Ευγενία Μποζίκα","titlegr":"Κουμπάρα"},
-  {"image":"JohnDoe.jpg","name":"Stathis Bozikas","title":"Best Man","namegr":"Στάθης Μποζίκας","titlegr":"Κουμπάρος"},
-  {"image":"JohnDoe.jpg","name":"Giorgos Malliaros","title":"Best Man","namegr":"Γιώργος Μαλλιαρός","titlegr":"Κουμπάρος"},
-  {"image":"JohnDoe.jpg","name":"Christos Lafantaris","title":"Best Man","namegr":"Χρήστος Λαφαντάρης","titlegr":"Κουμπάρος"}
+  {"image":"teo","name":"Theodore Vasiloudis","title":"Best Man","namegr":"Θοδωρής Βασιλούδης","titlegr":"Κουμπάρος"},
+  {"image":"jason","name":"Jason Loukaidis","title":"Best Man","namegr":"Ιάσονας Λουκαΐδης","titlegr":"Κουμπάρος"},
+  {"image":"eugenia","name":"Eugenia Bozika","title":"Best Woman","namegr":"Ευγενία Μποζίκα","titlegr":"Κουμπάρα"},
+  {"image":"statics","name":"Stathis Bozikas","title":"Best Man","namegr":"Στάθης Μποζίκας","titlegr":"Κουμπάρος"},
+  {"image":"maliaros","name":"Giorgos Malliaros","title":"Best Man","namegr":"Γιώργος Μαλλιαρός","titlegr":"Κουμπάρος"},
+  {"image":"lafa","name":"Christos Lafantaris","title":"Best Man","namegr":"Χρήστος Λαφαντάρης","titlegr":"Κουμπάρος"}
   ]
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
@@ -156,8 +156,15 @@ cw.loadTeamPage = function(){
       teamHtmlUrl,
       function(teamHtml){
         koumparoi = shuffle(koumparoi);
+        var rnd;
         for (var i = 0; i < 6; i++) {
-          teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          rnd = Math.random();
+          if (rnd<=0.025){
+            teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image+"_egg")
+          }
+          else{
+            teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          }
           teamHtml = insertProperty(teamHtml,"name"+i,koumparoi[i].name)
           teamHtml = insertProperty(teamHtml,"title"+i,koumparoi[i].title)
         }
@@ -168,8 +175,15 @@ cw.loadTeamPage = function(){
       teamHtmlUrlGr,
       function(teamHtml){
         koumparoi = shuffle(koumparoi);
+        var rnd;
         for (var i = 0; i < 6; i++) {
-          teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          rnd == Math.random();
+          if(rnd<=0.025){
+            teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image+"_egg")
+          }
+          else{
+            teamHtml = insertProperty(teamHtml,"img"+i,koumparoi[i].image)
+          }
           teamHtml = insertProperty(teamHtml,"name"+i,koumparoi[i].namegr)
           teamHtml = insertProperty(teamHtml,"title"+i,koumparoi[i].titlegr)
         }

@@ -1,24 +1,25 @@
- @font-face { 
-  font-family: soWhat; 
-  src: url('fonts/soWhat-Regular.ttf'); 
-} 
-
 body {
   font-size: 20px;
   color: #ece8e7;
-  background-color: #1c4443 ;
+  background-color: #293051 ;
   font-family: 'Advent Pro', sans-serif;
+}
+#collapsable-nav{
+  border: 0px;
 }
 /* Header */
 #header-nav {
-  background-color: #838c67;
+  background-color: #293051;
   border-radius: 0;
   border: 0;
+  background-image: url("../images/DSC00993.JPG");
+  background-size: 100%; 
+  background-repeat: no-repeat; 
+  padding-bottom: 20%;
 }
 .navbar-brand h1 { /*Name*/
-  font-family: 'Lobster', sans-serif;
-  color: #ece8e7 ;
-  font-size: 1.5em;
+  color: #8f1011;
+  font-size: 1.8em;
   text-transform: uppercase;
   font-weight: bold;
   text-shadow: 1px 1px 1px #222;
@@ -29,27 +30,30 @@ body {
   text-decoration: none;
 }
 #nav-list a {
-  color: #ece8e7 ;
+  color: #8f1011;
   text-align: center;
 }
 #nav-list a:hover{
-  background: #c5c5c5;
+  background: #df7373;
+  background: #e5f8fe; 
 }
 .navbar-default .navbar-nav > .active{}
 .navbar-default .navbar-nav > .active{
-  background: #c5c5c5;
+  background: #df7373;
+  background: #e5f8fe; 
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
-  background: #c5c5c5;
+  background: #df7373;
+  background: #e5f8fe; 
 }
 #nav-list a span {
   font-size: 1.5em;
   padding-bottom: 7px;
 }
 .navbar-header button.navbar-toggle, .navbar-header .icon-bar {
-  border: 1px solid #ece8e7 ;/**/
+  border: 1px solid #8f1011 ;
 }
 .navbar-header button.navbar-toggle {
   clear: both;
@@ -61,7 +65,7 @@ body {
   margin-top: 30px;
   padding-top: 30px;
   padding-bottom: 5px;
-  background-color: #838c67;
+  background-color: #293051 ;
   border-top: 0;
   line-height: .8;
   font-size: 0.8em;
@@ -87,7 +91,6 @@ body {
   border-style: dashed;
   font-size: 2em;
   color: #df7373;
-  font-family: soWhat;
 }
 .bigger{
   font-size: 1.6em;
@@ -102,12 +105,12 @@ a{
   font-weight: lighter;
 }
 h1{
-    font-size: 1.8em;
-    margin: 20px;
+  font-size: 1.8em;
+  margin: 20px;
 }
 h2{
-    font-size: 1.5em;
-    margin: 10px;
+  font-size: 1.5em;
+  margin: 10px;
 }
 .breath{
   margin: 8px;
@@ -116,8 +119,7 @@ h2{
 .dotted{
   border: 10px;
   border-style: dotted;
-  border-color: #838c67; 
-
+  border-color: #e5f8fe; 
 }
 /* End Home Page */
 /* Directions Page */
@@ -218,6 +220,9 @@ h2{
     left: 0;
     width: 100%;
   }
+  #nav-list{
+  padding-top: 50%;
+}
 }
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
@@ -234,6 +239,9 @@ h2{
   button.navbar-toggle{
     padding: 5px 6px;
   }
+  #nav-list{
+  padding-top: 50%;
+}
   .col-xxs-12 {
     position: relative;
     min-height: 1px;

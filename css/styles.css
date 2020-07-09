@@ -217,9 +217,10 @@ h2{
     margin: auto;
   }
   /*End About Page*/
-  /*.whole{
-    height: inherit;
-  }*/
+  .special{
+    left: 0;
+    width: 100%;
+  }
 }
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
@@ -253,5 +254,9 @@ h2{
   }
   .whole{
     height: inherit;
+  }
+  .special{
+    left: 0;
+    width: 100%;
   }
 }

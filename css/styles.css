@@ -1,3 +1,8 @@
+ @font-face { 
+  font-family: soWhat; 
+  src: url('fonts/soWhat-Regular.ttf'); 
+} 
+
 body {
   font-size: 20px;
   color: #ece8e7;
@@ -69,6 +74,25 @@ body {
 }
 /* End Footer */
 /* Home Page */
+.special{
+  font-weight: 700;
+  margin: 25px 0px;
+  border-top: 4px;
+  border-bottom: 4px;
+  border-left: 0px;
+  border-right: 0px;
+  position: relative;
+  left: 25%;
+  width: 50%;
+  border-style: dashed;
+  font-size: 2em;
+  color: #df7373;
+  font-family: soWhat;
+}
+.bigger{
+  font-size: 1.6em;
+  font-weight: 600;
+}
 a{
   color: #fff;
 }
@@ -93,6 +117,7 @@ h2{
   border: 10px;
   border-style: dotted;
   border-color: #838c67; 
+
 }
 /* End Home Page */
 /* Directions Page */
